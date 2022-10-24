@@ -8,7 +8,7 @@
 9 5 3 2
 8 4 4 2 */
 
-Console.WriteLine("Количество строк ");
+/* Console.WriteLine("Количество строк ");
 int rows = int.Parse(Console.ReadLine());
 Console.WriteLine("Количество столбцов ");
 int colums = int.Parse(Console.ReadLine());
@@ -16,8 +16,8 @@ int colums = int.Parse(Console.ReadLine());
 int[,] array = Getarray(rows, colums, 0, 10);
 Printarray(array);
 Console.WriteLine();
-ArrangeToLow(array);
-Printarray(array);
+// ArrangeToLow(array);
+// Printarray(array);
 
 void ArrangeToLow(int[,] array)
 {
@@ -38,10 +38,46 @@ void ArrangeToLow(int[,] array)
     }
 }
 
+ */
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+// Например, задан массив:
 
 
+Console.WriteLine("Количество строк ");
+int rows = int.Parse(Console.ReadLine());
+Console.WriteLine("Количество столбцов ");
+int colums = int.Parse(Console.ReadLine());
+
+int[,] array = Getarray(rows, colums, 0, 10);
+Printarray(array);
+Console.WriteLine();
+RowMinSum(array);
+Printarray(array);
 
 
+void RowMinSum(int[,] array)
+{
+    int mRow = 0;
+    int mSumRow = 0;
+    int sumRow = 0;
+    for (int i = 0; i < array.GetLength(1); i++)
+    {
+        mRow =mRow + array[0, i];
+    }
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++) sumRow = sumRow + array[i, j];
+        if (sumRow < mRow)
+        {
+            mRow = sumRow;
+            mSumRow = i;
+        }
+        sumRow = 0;
+    }
+    Console.Write($"{mSumRow + 1} строка");
+    Console.WriteLine();
+}
 
 
 
